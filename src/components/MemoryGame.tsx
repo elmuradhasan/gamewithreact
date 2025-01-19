@@ -94,8 +94,14 @@ const MemoryGameF: React.FC = () => {
         {Object.keys(themes).map((theme) => (
           <Button
             key={theme}
+            className="capitalize p-3"
             type={currentTheme === theme ? "primary" : "default"}
-            onClick={() => dispatch(setTheme(theme))}
+            onClick={() =>{
+               dispatch(setTheme(theme))
+               setIsModalVisible(false);
+               setHasStarted(false); // Reset timer start flag
+               setTimeLeft(120); // Reset timer
+            }}
           >
             {theme.charAt(0).toUpperCase() + theme.slice(1)}
           </Button>
